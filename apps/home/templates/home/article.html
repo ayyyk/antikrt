@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+<div class="container-xl mt-3 text-center">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xxl-8 col-xl-9 col-lg-10 col-md-12 col-sm-12 col-12 shadow mb-4 " style="background-color: white;">
+            <h3 class="my-3"><b>{{page.title}}</b></h3>
+            <br>
+            {% if page.body %}
+            <div class="text-start mx-3">
+            {% include_block page.body %}
+            </div>
+            {% else %}
+            <div style="height: 800px;">
+                Скоро все будет)) !
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

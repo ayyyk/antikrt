@@ -1,0 +1,409 @@
+@import "~bootstrap/scss/bootstrap";
+//@import "custom.scss";
+
+
+@font-face {
+    font-family: BebasNeueBold;
+    src: url("../fonts/BebasNeueBold.woff");
+}
+
+@font-face {
+    font-family: NotoSans;
+    src: url("../fonts/NotoSans.woff");
+}
+
+body{
+    font-family: NotoSans, Helvetica, "Courier New", sans-serif;
+    background-color: white;
+    color: #141414;
+    font-size: 16px;
+}
+
+.redtext{
+    color: #E30410;
+}
+
+nav {
+    font-family: NotoSans, Helvetica, "Courier New", sans-serif;
+    font-size: 18px; 
+    background-color: white;
+
+    .sitelogo{
+        font-size: 48px;
+        font-family: BebasNeueBold, Helvetica, "Courier New", sans-serif;
+        color: #141414;
+        padding: 0px;
+        margin:0px;
+    }
+
+    .logo{
+        width: 60px;
+    }
+
+    .linkselem{
+        margin-left: 1.25em;
+    }
+
+    .links{
+        color: #141414;
+    }
+
+    .links:hover{
+        color: #E10510;
+    }
+
+    .buttons{
+        font-family: BebasNeueBold, Helvetica, "Courier New", sans-serif;
+        letter-spacing: 0.04rem;
+        font-size: 20px; 
+    }
+
+    @media (max-width: 1250px) {
+        font-size: 17px;
+
+       .linkselem{
+            margin-left: 0.4em;
+        } 
+    }
+
+    @include media-breakpoint-down(xl) {
+        font-size: 16px; 
+
+        .sitelogo{
+            font-size: 40px;
+        }
+
+        .logo{
+            width: 50px;
+        }
+
+        .linkselem{
+            margin-left: 1em;
+        } 
+
+        .buttons{
+            font-size: 16px; 
+        }
+    }
+
+    @media (max-width: 1100px) {
+        font-size: 15px; 
+
+        .sitelogo{
+            font-size: 36px;
+        }
+
+        .logo{
+            width: 40px;
+        }
+
+       .linkselem{
+            margin-left: 0.5em;
+        } 
+
+        .buttons{
+            letter-spacing: 0.00rem;
+            font-size: 15px; 
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        font-size: 18px;
+
+        .sitelogo{
+            font-size: 48px;
+        }
+
+        .logo{
+            width: 60px;
+        }
+
+        .buttons{
+            letter-spacing: 0.04rem;
+            font-size: 20px; 
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        .links{
+            font-size: 15px;
+        }
+
+        .sitelogo{
+            font-size: 36px;
+        }
+        .logo{
+            width: 40px;
+        }
+
+        .buttons{
+            letter-spacing: 0.00rem;
+            font-size: 15px; 
+        }
+    }
+}
+
+footer{
+    background-color: #525252;
+    color: white;
+
+    .sitelogo{
+        font-size: 48px;
+        font-family: BebasNeueBold, Helvetica, "Courier New", sans-serif;
+        color: #141414;
+        padding: 0px;
+        margin:0px;
+    }
+
+    .sitelogo:hover{
+        color: #141414;
+    }
+
+    .linkselem{
+        margin-left: 40px;
+    }
+
+    .links{
+        font-size:18px; 
+        color: white;
+    }
+
+    .links:hover{
+        color: white;
+    }
+
+    .innerlinks{
+        font-size:18px; 
+        color: #141414;
+    }
+
+    .icons img{
+        width: 40px;
+    }
+
+    .icons a{
+       color: white;
+    }
+
+    .icons a:hover{
+        color: white;
+    }
+
+    .sendus{
+        width: 15px;
+        color: white;
+    }
+
+    .autorsbox a{
+        color: white;
+    }
+
+    .autorsbox a:hover{
+        color: white;
+    }
+
+    .buttons{
+        font-family: BebasNeueBold, Helvetica, "Courier New", sans-serif;
+        letter-spacing: 0.04rem;
+        font-size: 20px; 
+    }
+
+    @media (max-width: 1250px) {
+        .linkselem{
+            margin-left: 26px;
+        } 
+    }
+
+    @include media-breakpoint-down(xl) {
+        .links{
+            font-size:16px; 
+        }
+
+        .linkselem{
+            margin-left: 20px;
+        } 
+    }
+
+    @media (max-width: 1100px) {
+        .sitelogo{
+            font-size: 40px;
+        }
+
+        .links{
+            font-size:15px; 
+        }
+
+        .logo{
+            width: 50px;
+        }
+
+        .buttons{
+            letter-spacing: 0.00rem;
+            font-size: 16px; 
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        .sitelogo{
+            font-size: 48px;
+        }
+
+        .links{
+            font-size:18px; 
+        }
+
+        .buttons{
+            letter-spacing: 0.04rem;
+            font-size: 20px; 
+        }
+
+    }
+
+    @media (max-width: 830px) {
+        .links{
+            font-size:17px; 
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        .links{
+            font-size:18px; 
+        }
+    }
+}
+
+#homepage{
+    .textlogo {
+        font-size: 64px;
+        font-family:BebasNeueBold, Helvetica, "Courier New", sans-serif;;
+        line-height: 93%;
+    }
+
+    .icons img{
+        width: 50px;
+    }
+
+    .leftlogoimage{
+        width: 250px;
+        margin-right: 50px;
+        margin-top: 51px;
+    }
+
+    .rightlogoimage{
+        width: 130px;
+        margin-left: 100px;
+        margin-right: 70px;
+        margin-top: 30px;
+    }
+
+    .buttons{
+        font-family: BebasNeueBold, Helvetica, "Courier New", sans-serif;
+        letter-spacing: 0.04rem;
+        font-size: 20px; 
+    }
+
+    .infobox{
+        background-color: #E9ECEF; 
+
+        .textlogo2{
+            font-family:BebasNeueBold, Helvetica, "Courier New", sans-serif;;
+            font-size: 48px; 
+        }
+
+        .bigbuttons{
+            width: 150px;
+        }
+
+        li p{
+            margin-bottom: 0.1rem ;
+        }
+
+        li a{
+            font-size: 12px;
+            color: #1777E4;
+        }
+
+        /*
+        ul {
+            list-style-image: url('../imgs/vector.png');
+        }
+        */
+    }
+
+    @media (max-width: 1030px) {
+        .leftlogoimage{
+            margin-right: 35px;
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        .leftlogoimage{
+            margin-right: 0px;
+            margin-top: 0px;
+            width: 300px;
+        }
+
+        .textlogo {
+            font-size: 64px;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        .textlogo {
+            font-size: 55px;
+        }
+        .infobox{
+            .textlogo2{
+                font-size: 40px; 
+            }
+        }
+    }
+
+    @media (max-width: 650px) {
+        .textlogo {
+            font-size: 40px;
+        }
+    }  
+/*
+    @media (max-width: 600px) {
+        .textlogo {
+            font-size: 35px;
+        }
+    }  
+*/
+    @include media-breakpoint-down(sm) {
+        .infobox{
+            .textlogo2{
+                font-size: 30px; 
+            }
+        }
+
+        .leftlogoimage{
+            width: 250px;
+        }
+    }
+
+    @media (max-width: 550px) {
+        .textlogo {
+            font-size: 30px;
+        }
+
+        .infobox{
+            .textlogo2{
+                font-size: 25px; 
+            }
+        }
+    } 
+
+    @media (max-width: 450px) {
+        .textlogo {
+            font-size: 25px;
+        }
+
+        .infobox{
+            .textlogo2{
+                font-size: 22px; 
+            }
+        }
+    } 
+}
