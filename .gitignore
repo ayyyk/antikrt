@@ -4,7 +4,6 @@ dbmysql/
 dbsqlite/
 .idea/
 
-
 settings.env
 
 docs/
@@ -23,3 +22,5 @@ antikrt/
 *.log
 
 *.sqlite3
+
+.env
