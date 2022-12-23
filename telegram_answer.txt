@@ -1,0 +1,165 @@
+'update_id': 14310937, 
+'channel_post': {
+	'message_id': 29, 
+	'sender_chat': {
+		'id': -1001287883945, 
+		'title': 'Ayyyk.ru', 
+		'type': 'channel'
+	}, 
+	'chat': {
+		'id': -1001287883945, 
+		'title': 'Ayyyk.ru', 
+		'type': 'channel'
+	}, 
+	'date': 1670920478, 
+	'text': 'sdfgsdfgsdfg'
+}
+
+'update_id': 606742815, 
+'channel_post': {
+	'message_id': 64, 
+	'sender_chat': {
+		'id': -1001287883945, 
+		'title': 'Ayyyk.ru', 
+		'type': 'channel'
+	}, 
+	'chat': {
+		'id': -1001287883945,
+		'title': 'Ayyyk.ru',
+		'type': 'channel'
+	}, 
+	'date': 1671004508, 
+	'forward_from': {
+		'id': 1138983279,
+		'is_bot': False,
+		'first_name': 'Андрей',
+		'username': 'ayyyk_ru',
+		'language_code': 'ru'
+	}, 
+	'forward_date': 1671004485, 
+	'text': 'sssssssssssssss'
+}
+
+
+
+'update_id': 606742816, 
+'channel_post': {
+	'message_id': 65, 
+	'sender_chat': {
+		'id': -1001287883945,
+		'title': 'Ayyyk.ru',
+		'type': 'channel'
+	}, 
+	'chat': {
+		'id': -1001287883945, 
+		'title': 'Ayyyk.ru', 
+		'type': 'channel'
+	}, 
+	'date': 1671004644, 
+	'forward_from': {
+		'id': 1688884573,
+		'is_bot': False,
+		'first_name': 'Eugeniy',
+		'username': 'eugeny_izcheb'
+	}, 
+	'forward_date': 1670952894,
+	'document': {
+		'file_name': 'image_2022-12-13_20-34-52.png',
+		'mime_type': 'image/png',
+		'thumb': {
+			'file_id': 'AAMCAgADHQJMw4ypAANBY5mB5Kml4Yi_pFK1tu0k8FZsKQoAApIlAAKLXMhIYgMahxpS85gBAAdtAAMsBA',
+			'file_unique_id': 'AQADkiUAAotcyEhy',
+			'file_size': 9341,
+			'width': 320,
+			'height': 173
+		}, 
+		'file_id': 'BQACAgIAAx0CTMOMqQADQWOZgeSppeGIv6RStbbtJPBWbCkKAAKSJQACi1zISGIDGocaUvOYLAQ',
+		'file_unique_id': 'AgADkiUAAotcyEg',
+		'file_size': 286511
+	}, 
+	'caption': 'Здравствуйте, подскажите, почему сервер перестает грузиться, когда я из webpack.config.js удаляю плагин NodeHmrPlugin'
+}
+
+
+
+
+
+'update_id': 606742811, 
+'message': {
+	'message_id': 2792, 
+	'from': {
+		'id': 550293799,
+		'is_bot': False,
+		'first_name': 'Андрей',
+		'last_name': 'Ковыляев',
+		'language_code': 'ru'
+	}, 
+	'chat': {
+		'id': 550293799, 
+		'first_name': 'Андрей',
+		'last_name': 'Ковыляев',
+		'type': 'private'
+	}, 
+	'date': 1671003823, 
+	'text': 'Рроро'
+}
+
+
+
+'update_id': 14311057, 
+'channel_post': {
+	'message_id': 189, 
+	'sender_chat': {
+		'id': -1001838577085, 
+		'title': 'АНТИ-КРТ Движение жителей СПб', 
+		'username': 'channel_anti_krt', 
+		'type': 'channel'
+	}, 'chat': {
+		'id': -1001838577085, 
+		'title': 'АНТИ-КРТ Движение жителей СПб', 
+		'username': 'channel_anti_krt', 
+		'type': 'channel'
+	}, 
+		'date': 1671500132, 
+		'forward_from_chat': {
+			'id': -1001645796363,
+			'title': 'ЖКХ-Telegraph',
+			'username': 'gkh_telegraf',
+			'type': 'channel'
+		}, 
+			'forward_from_message_id': 429, 
+			'forward_date': 1671499651, 
+			'photo': [{
+				'file_id': 'AgACAgQAAx0CbZZ1vQADvWOhEWRAqt8HKY8AAWPQEExBUFIoHgACB68xGwS_DVE8ztBgBRBh6AEAAwIAA3MAAywE', 
+				'file_unique_id': 'AQADB68xGwS_DVF4', 
+				'file_size': 1537, 
+				'width': 90, 
+				'height': 57
+				}, {
+				'file_id': 'AgACAgQAAx0CbZZ1vQADvWOhEWRAqt8HKY8AAWPQEExBUFIoHgACB68xGwS_DVE8ztBgBRBh6AEAAwIAA20AAywE', 
+				'file_unique_id': 'AQADB68xGwS_DVFy', 
+				'file_size': 29363, 
+				'width': 320, 
+				'height': 204
+				}, {
+				'file_id': 'AgACAgQAAx0CbZZ1vQADvWOhEWRAqt8HKY8AAWPQEExBUFIoHgACB68xGwS_DVE8ztBgBRBh6AEAAwIAA3gAAywE', 
+				'file_unique_id': 'AQADB68xGwS_DVF9', 
+				'file_size': 146732, 
+				'width': 800, 
+				'height': 509
+				}, {
+				'file_id': 'AgACAgQAAx0CbZZ1vQADvWOhEWRAqt8HKY8AAWPQEExBUFIoHgACB68xGwS_DVE8ztBgBRBh6AEAAwIAA3kAAywE', 
+				'file_unique_id': 'AQADB68xGwS_DVF-', 
+				'file_size': 313823, 
+				'width': 1280, 
+				'height': 814
+				}
+			], 
+			'caption': '«Россия будет страной «горизонтальных городов» \n\nТо есть городов, состоящих из малоэтажных, преимущественно одноэтажных домов. По данным Росстата, за 11 месяцев 2022 года в России было введено 93,3 млн кв. м жилья, из которых большая часть — 56 млн кв. м — приходится на индивидуальное жилищное строительство (ИЖС). Сегодня ИЖС занимает 60% в структуре ввода жилья в России, тогда как с 2010 по 2018 год показатель находился на уровне 40–43%, в 2019-м составлял 45,1%, в 2020-м — 47,9%, в первом полугодии 2021-го — 55,5%. \n \nПодробнее на РБК: \nhttps://realty.rbc.ru/news/639b13229a794751e47b23c6', 
+			'caption_entities': [{'offset': 545, 'length': 51, 'type': 'url'}]
+		}
+	}
+
+
+
+https://api.telegram.org/bot5930617634:AAFYuuJlosjlcIT16uNkW-6dYUQwHLZ8Sh4/setWebhook?url=https://anti-krt.spb.ru/telegram/

@@ -34,7 +34,7 @@
             <img class="rightlogoimage" src="{% static 'imgs/rightlogo.png'%}">
         </div>
     </div>
-    <div class="row text-start rounded-4 px-md-4 mt-5 mx-1 mx-md-3 mx-lg-0 infobox">
+    <div class="row text-start rounded-4 px-md-4 mt-5 mx-1 mx-md-3 mb-5 mx-lg-0 infobox">
         <div style="height: 60px;"></div>
         <div class="d-flex flex-column flex-lg-row flex-nowrap mb-3">
             <h3 class="text-start ms-5 me-0 me-md-5  order-1 order-lg-0 flex-fill textlogo2">
@@ -73,9 +73,25 @@
             </div>
         </div>
     </div>
+    <div style="height: 20px;"></div>
     <div class="row mt-lg-5">
         <div class="d-flex flex-column flex-lg-row">
-            <div class="col-lg-6 border placeholder-glow" style="height: 450px;"></div>
+            <div  class="col-lg-6 me-4" >
+                <div id="krtnewsheader" class="d-flex justify-content-between align-items-center textlogo2 mb-3">
+                    <div class="mb-0">
+                        Новости канала
+                    </div>
+                    <div class="subtitle mt-0">
+                        <a href="https://t.me/channel_anti_krt" class="btn btn-outline-danger subtitle buttons rounded-5 px-3" tabindex="-1" role="button" aria-disabled="true" target="_blank">"АНТИ-КРТ Движение жителей СПБ"</a>
+                    </div>
+                </div>
+                    <!--div>
+                        <a href="https://t.me/channel_anti_krt" class="btn btn-primary buttons rounded-5 px-5" tabindex="-1" role="button" aria-disabled="true" target="_blank">Перейти в телеграм</a>
+                    </div-->
+                <div id="krtnews" class="d-flex flex-column text-start">
+                    
+                </div>
+            </div>
             <div class="col-lg-6 text-center" >
                 <figure class="figure mb-0">
                     {% image page.related_page.home.bottomLogo width-550 class="figure-img img-fluid rounded" %}

@@ -11,23 +11,6 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.models import Page, Orderable
 
-
-class HomePage(Page):
-    template = 'home/home.html'
-    related_page = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-    )
-
-    max_count = 1
-
-    content_panels = Page.content_panels + [
-        PageChooserPanel('related_page', 'home.Home'),
-    ]
-
 class Home(Page):
     bottomLogo = models.ForeignKey(
         'wagtailimages.Image',

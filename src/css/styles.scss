@@ -279,6 +279,11 @@ footer{
         line-height: 93%;
     }
 
+    .textlogo2{
+        font-family:BebasNeueBold, Helvetica, "Courier New", sans-serif;;
+        font-size: 48px; 
+    }
+
     .icons img{
         width: 50px;
     }
@@ -304,11 +309,6 @@ footer{
 
     .infobox{
         background-color: #E9ECEF; 
-
-        .textlogo2{
-            font-family:BebasNeueBold, Helvetica, "Courier New", sans-serif;;
-            font-size: 48px; 
-        }
 
         .bigbuttons{
             width: 150px;
@@ -406,4 +406,20 @@ footer{
             }
         }
     } 
+}
+
+#krtnewsheader {
+    .subtitle{
+        //font-family: NotoSans, Helvetica, "Courier New", sans-serif;
+        font-size: 24px;
+    }
+}
+
+#krtnews {
+    .newselem {
+        text-size: 16px;
+        background-color: #E9ECEF;
+        @extend .mb-3;
+        @extend .p-2;
+    }
 }
