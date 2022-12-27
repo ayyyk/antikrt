@@ -8,7 +8,6 @@ from wagtail.blocks import (RichTextBlock,
                             CharBlock, 
                             URLBlock)
 from wagtail.fields import RichTextField, StreamField
-from wagtail.images.blocks import ImageChooserBlock
 from wagtail.models import Page, Orderable
 
 
@@ -23,6 +22,7 @@ class HomePage(Page):
     )
 
     max_count = 1
+    subpage_types = ['articles.Article']
 
     content_panels = Page.content_panels + [
         PageChooserPanel('related_page', 'home.Home'),

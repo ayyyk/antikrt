@@ -8,69 +8,46 @@ from wagtail.blocks import (RichTextBlock,
                             CharBlock, 
                             URLBlock)
 from wagtail.fields import RichTextField, StreamField
-from wagtail.images.blocks import ImageChooserBlock
+from  wagtail.images.blocks import ImageChooserBlock
 from wagtail.models import Page, Orderable
 
-class Home(Page):
-    bottomLogo = models.ForeignKey(
-        'wagtailimages.Image',
+class Article(Page):
+    page_description = "Статья с заголовком и кратким описанием"
+    description = models.CharField(max_length=250)
+    body = StreamField([
+            ('title', CharBlock(
+                label='Заголовок', 
+                template="blocks/title.html"
+            )),
+            ('subTitle', CharBlock(
+                label='Подзаголовок',
+                template="blocks/subtitle.html"
+            )),
+            ('youtube', CharBlock(
+                label='Подзаголовок',
+                template="blocks/youtube.html"
+            )),
+            ('shortImage', ImageChooserBlock(
+                label='Основной размер картинки',
+                template="blocks/shortImg.html"
+            )),
+            ('longImage', ImageChooserBlock(
+                label='Картинка во всю страницу',
+                template="blocks/longimg.html"
+            )),
+            ('text', RichTextBlock(
+                feachers= ['italic', 'bold', 'ol', 'ul', 'hr', 
+                            'link', 'document-link',],
+                label='Основной текст'
+            ))
+        ], 
         blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    r1 = RichTextField(
-        verbose_name="Первый столбец, первая строка",
-        features=['bold', 'link', 'document-link', 'subscript'],
-        blank=True,
-        null=True,
-    )
-
-    r2 = RichTextField(
-        verbose_name="Первый столбец, вторая строка",
-        features=['bold', 'link', 'document-link', 'subscript'],
-        blank=True,
-        null=True,
-    )
-
-    r3 = RichTextField(
-        verbose_name="Первый столбец, третья строка",
-        features=['bold', 'link', 'document-link', 'subscript'],
-        blank=True,
-        null=True,
-    )
-
-    r4 = RichTextField(
-        verbose_name="Второй столбец, первая строка",
-        features=['bold', 'link', 'document-link', 'subscript'],
-        blank=True,
-        null=True,
-    )
-
-    r5 = RichTextField(
-        verbose_name="Второй столбец, вторая строка",
-        features=['bold', 'link', 'document-link', 'subscript'],
-        blank=True,
-        null=True,
-    )
-
-    r6 = RichTextField(
-        verbose_name="Второй столбец, третья строка",
-        features=['bold', 'link', 'document-link', 'subscript'],
-        blank=True,
-        null=True,
+        use_json_field=True
     )
 
     subpage_types = []
-    max_count = 1
 
     content_panels = Page.content_panels + [
-        FieldPanel('r1'),
-        FieldPanel('r2'), 
-        FieldPanel('r3'), 
-        FieldPanel('r4'),
-        FieldPanel('r5'), 
-        FieldPanel('r6'), 
-        FieldPanel('bottomLogo'), 
+        FieldPanel('description'), 
+        FieldPanel('body'), 
     ]

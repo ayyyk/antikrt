@@ -150,13 +150,13 @@ footer{
     .sitelogo{
         font-size: 48px;
         font-family: BebasNeueBold, Helvetica, "Courier New", sans-serif;
-        color: #141414;
+        color: white; 
         padding: 0px;
         margin:0px;
     }
 
     .sitelogo:hover{
-        color: #141414;
+        color: white; 
     }
 
     .linkselem{
@@ -277,11 +277,13 @@ footer{
         font-size: 64px;
         font-family:BebasNeueBold, Helvetica, "Courier New", sans-serif;;
         line-height: 93%;
+        color: #141414;
     }
 
     .textlogo2{
         font-family:BebasNeueBold, Helvetica, "Courier New", sans-serif;;
-        font-size: 48px; 
+        font-size: 48px;
+        color: #141414; 
     }
 
     .icons img{

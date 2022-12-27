@@ -9,6 +9,8 @@ from django.db import models
 from .loggers import logger
 
 MESSAGE_LENGTH = 150
+DIVIDERS = [' ', '!', '?', '.', ',']
+TERMINATORS = ['.', '?', '!']
 
 class KrtNews(models.Model):
     class Meta():
@@ -39,74 +41,86 @@ class KrtNews(models.Model):
         'Full message from the channel',
     )
 
-# ['http://vk.com/club123456768', 'http://vk.com/club42']
-# url_pattern = r'\[url\](.*?)\[\/url\]'
-# urls = re.findall(url_pattern, corrected_message)
-# for link in urls:
-#     link_index = corrected_message.find(link)
-#     if (link_index<message_length
-#             and (link_index+len(link))>message_length):
-#         corrected_message = corrected_message[:link_index]
-#         break
-#else:
+    @staticmethod
+    def corrected_message2(message, message_length):
+        if not message:
+            return message
+        mes = message.replace('\n', ' ') 
+        while True:
+            if len(mes)==len(mes:=mes.replace('  ', ' ')): 
+                break
+        if len(mes)<=message_length:
+            return mes
+        mes2 = mes[:message_length]
+        if not mes[message_length] in DIVIDERS:
+            newLen = max(mes2.rfind(ch) for ch in DIVIDERS)
+            mes2 = mes2[:newLen] if newLen!=-1 else ''
+        return mes2.strip()
 
     @staticmethod
-    def corrected_message(message, message_length):
-        message3 = message.replace('\n', ' ') 
-        while True:
-            message2 = message3
-            message3 = message3.replace('  ', ' ')
-            if len(message2)==len(message3): break
+    def corrected_message(self, message, message_length):
+        def corrected_message2(message, message_length):
+            mes = message.replace('\n', ' ') 
+            while True:
+                if len(mes)==len(mes:=mes.replace('  ', ' ')): 
+                    break
+            if len(mes)<=message_length:
+                return mes
+            mes2 = mes[:message_length]
+            if not mes[message_length] in DIVIDERS:
+                newLen = max(mes2.rfind(ch) for ch in DIVIDERS)
+                mes2 = mes2[:newLen] if newLen!=-1 else ''
+            return mes2.strip()
 
-        if len(message3)>message_length:
-            message2 = message3[:message_length]
-            if not message3[message_length] in [' ', '!', '?', '.', ',']:
-                divIndex = max(message2.rfind(' '),
-                                message2.rfind('!'),
-                                message2.rfind('?'),
-                                message2.rfind('.'),
-                                message2.rfind(','))
-                message2 = message2[:divIndex] if divIndex>=0 else ''
-
-        return message2.strip()
+        if not message:
+            return message
+        try:
+            limIndex = min(ind for ch in TERMINATORS 
+                if (ind:=message.find(ch))!=-1 and ind<=message_length)
+        except ValueError:
+            mes = corrected_message2(message, message_length)
+        except Exception as err:
+            mes = corrected_message2(message, message_length)
+            logger.info('corrected_message: Exception')
+            logger.info(err)
+        else:
+            mes = message[:limIndex]
+            mes = mes.replace('\n', ' ') 
+            while True:
+                if len(mes)==len(mes:=mes.replace('  ', ' ')): 
+                    break
+        return mes
 
     @classmethod
     def add_news(cls, full_message):
         try:
-            tmp_message_text = full_message['channel_post']['text']
+            message_text = full_message['channel_post']['text']
         except KeyError:
             try:
-                tmp_message_text = full_message['channel_post']['caption']
+                message_text = full_message['channel_post']['caption']
             except KeyError:
-                tmp_message_text = None
+                message_text = ''
 
-        if not tmp_message_text is None:
-            message_text = cls.corrected_message(tmp_message_text, 
-                                                MESSAGE_LENGTH)
+        message_date = make_aware(datetime.fromtimestamp(
+            int(full_message['channel_post']['date']))).isoformat()
 
-            message_id = int(full_message['channel_post']['message_id'])
-            message_date = make_aware(datetime.fromtimestamp(
-                int(full_message['channel_post']['date']))).isoformat()
+        try:
+            file_id = full_message['channel_post']['document']['file_id']
+        except KeyError:
+            file_id = None
 
-            try:
-                file_id = full_message['channel_post']['document']['file_id']
-            except KeyError:
-                file_id = None
+        new_news = cls(
+            messageId=int(full_message['channel_post']['message_id']),
+            message_date=message_date,
+            message=cls.corrected_message(message_text, MESSAGE_LENGTH),
+            file_id=file_id,
+            full_message=full_message,
+        )
 
-            print(message_id, 'add_news')
+        new_news.save()
 
-            new_news = cls(
-                messageId=message_id, 
-                message_date=message_date,
-                message=message_text,
-                file_id=file_id,
-                full_message=full_message,
-            )
-
-            new_news.save()
-
-            if cls.objects.all().count()>100:
-                cls.objects.all().order_by('messageId').first().delete()
+        if cls.objects.all().count()>100:
+            cls.objects.all().order_by('messageId').first().delete()
 
     @classmethod
     def edit_post(cls, full_message):
@@ -118,44 +132,29 @@ class KrtNews(models.Model):
             #logger.info(f'{full_message=}')
         else:
             try:
-                tmp_message_text =  full_message['edited_channel_post']['text']
+                tmp_message_text = full_message['edited_channel_post']['text']
             except KeyError:
                 try:
                     tmp_message_text = full_message[
                         'edited_channel_post']['caption']
                 except KeyError:
-                    tmp_message_text = 'Новое сообщение на нашем канале доступно!'
+                    tmp_message_text = ''
 
         elem.message = cls.corrected_message(tmp_message_text, MESSAGE_LENGTH)
         elem.save()
 
     @classmethod
     def get_all_news(cls):
-        all_news = cls.objects.all().order_by('-messageId').values()[:10]
-        all_news_json = list()
-        for elem in all_news:
-            all_news_json.append({
-                'messageId': elem['messageId'],
-                'message_date': elem['message_date'],
-                'message': elem['message']
-            })
-        return all_news_json
+        all_news = cls.objects.all().order_by('-messageId').values()[:5]
+        return [(elem['messageId'], elem['message_date'], elem['message'])
+            for elem in all_news]
 
     @classmethod
     def get_latest_news(cls, last_id):
-        print(f'{last_id=}')
         latest_news = cls.objects.filter(
-        	messageId__gt=last_id).order_by('-messageId').values()
-        
-        latest_news_json = list()
-        for elem in latest_news:
-            latest_news_json.append({
-                'messageId': elem['messageId'],
-                'message_date': elem['message_date'],
-                'message': elem['message']
-            })
-        print(latest_news_json)
-        return latest_news_json
+            messageId__gt=last_id).order_by('-messageId').values()
+        return [(elem['messageId'], elem['message_date'], elem['message']) 
+            for elem in latest_news]
 
     def __str__(self):
         return self.name
