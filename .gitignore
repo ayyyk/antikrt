@@ -24,3 +24,5 @@ antikrt/
 *.sqlite3
 
 .env
+
+telegram_answer.txt
