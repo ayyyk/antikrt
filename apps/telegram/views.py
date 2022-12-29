@@ -9,8 +9,7 @@ from krtnews.models import KrtNews
 
 from .loggers import logger
 
-#CHANNEL_ID = config('CHANNEL_ID')
-TEST_CHANNEL_ID = -1001287883945
+CHANNEL_ID = config('CHANNEL_ID')
 
 class Telegram(View):
     def post(self, request, *args, **kwargs):
@@ -18,11 +17,11 @@ class Telegram(View):
         logger.info(f"{full_message=}")
         try:
             isPost = full_message[
-                'channel_post']['chat']['id']==TEST_CHANNEL_ID
+                'channel_post']['chat']['id']==CHANNEL_ID
         except KeyError:
             try:
                 isEdit = full_message[
-                    'edited_channel_post']['chat']['id']==TEST_CHANNEL_ID
+                    'edited_channel_post']['chat']['id']==CHANNEL_ID
             except KeyError:
                 logger.info('bad source')
             else:

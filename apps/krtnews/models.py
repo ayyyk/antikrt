@@ -42,22 +42,6 @@ class KrtNews(models.Model):
     )
 
     @staticmethod
-    def corrected_message2(message, message_length):
-        if not message:
-            return message
-        mes = message.replace('\n', ' ') 
-        while True:
-            if len(mes)==len(mes:=mes.replace('  ', ' ')): 
-                break
-        if len(mes)<=message_length:
-            return mes
-        mes2 = mes[:message_length]
-        if not mes[message_length] in DIVIDERS:
-            newLen = max(mes2.rfind(ch) for ch in DIVIDERS)
-            mes2 = mes2[:newLen] if newLen!=-1 else ''
-        return mes2.strip()
-
-    @staticmethod
     def corrected_message(self, message, message_length):
         def corrected_message2(message, message_length):
             mes = message.replace('\n', ' ') 
@@ -125,24 +109,7 @@ class KrtNews(models.Model):
     @classmethod
     def edit_post(cls, full_message):
         message_id = int(full_message['edited_channel_post']['message_id'])
-        try:
-            elem = cls.objects.get(messageId=message_id)
-        except KeyError:
-            logger.info('редактируемый элемент не найден')
-            #logger.info(f'{full_message=}')
-        else:
-            try:
-                tmp_message_text = full_message['edited_channel_post']['text']
-            except KeyError:
-                try:
-                    tmp_message_text = full_message[
-                        'edited_channel_post']['caption']
-                except KeyError:
-                    tmp_message_text = ''
-
-        elem.message = cls.corrected_message(tmp_message_text, MESSAGE_LENGTH)
-        elem.save()
-
+        
     @classmethod
     def get_all_news(cls):
         all_news = cls.objects.all().order_by('-messageId').values()[:5]
