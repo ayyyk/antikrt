@@ -14,8 +14,8 @@ package-lock.json
 
 .vs/
 
-antiEnv/
-antikrt/
+antienv/
+
 
 .gitignore.bak
 

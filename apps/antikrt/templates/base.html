@@ -1,0 +1,184 @@
+{% load static wagtailcore_tags %}
+{% load static %}
+{% load cache %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+        {% wagtail_site as current_site %}
+        {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+        {% endblock %}
+    </title>
+    <meta http-equiv="Content-Security-Policy" />
+
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    
+    {# Force all links in the live preview panel to be opened in a new tab #}
+    {% if request.in_preview_panel %}
+		<base target="_blank">
+    {% endif %}
+
+    {# Global stylesheets #}
+    
+    <style type="text/css">
+        {% block extra_css %}
+        {# Override this in tem plates to add extra stylesheets #}
+        {% endblock %}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top border-bottom py-0">
+        <div class="container-xxl d-flex justify-content-between">
+            <a class="navbar-brand sitelogo" href="{% slugurl 'homepage' %}"> 
+                <img class="logo" src="{% static 'imgs/anti-krt.png'%}">
+                <span class="redtext">АНТИ</span>-КРТ
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: white;">
+                <span class="navbar-toggler-icon"> </span>
+            </button>
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+                <ul class="navbar-nav d-glex">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle links" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Медиаресурсы
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% slugurl 'homepage' %}"> СМИ о КРТ</a></li>
+                            <li><a class="dropdown-item" href="{% slugurl 'homepage' %}"> Авторские статьи </a></li>
+                            <li><a class="dropdown-item" href="{% slugurl 'homepage' %}"> Подборка видео </a></li>
+                            <li><a class="dropdown-item" href="{% slugurl 'homepage' %}"> Полезные сервисы </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item linkselem d-inline-flex">
+                        <a class="nav-link links" aria-current="page" href="{% slugurl 'activity' %}">
+                            Мероприятия
+                        </a>
+                    </li>
+                    <li class="nav-item linkselem d-inline-flex">
+                        <a class="nav-link links" aria-current="page" href="{% slugurl '' %}">
+                            Дорожная карта по ОСС
+                        </a>
+                    </li>
+                    <li class="nav-item linkselem ">
+                        <a class="nav-link links" aria-current="page" href="{% slugurl 'homepage' %}">
+                            Законодательство
+                        </a>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-outline-dark rounded-5 px-4 my-2 buttons d-block d-lg-none">УЗНАТЬ О ДВИЖЕНИИ</button>
+            </div>
+            <button type="button" class="btn btn-outline-dark rounded-5 px-4 buttons d-none d-lg-block">УЗНАТЬ О ДВИЖЕНИИ</button>
+        </div>
+    </nav>
+    
+    {% block content %}
+
+
+
+    {% endblock %}
+
+    <footer class="container-fluid mt-2 mt-lg-5 pt-2">
+        <div class="container-xxl">
+            <div class="row">
+                <div class="d-lg-flex flex-row justify-content-between align-items-center" >
+                    <a class="navbar-brand sitelogo me-5 me-lg-0" href="{% slugurl 'home' %}"> 
+                        <span class="redtext">АНТИ</span>-КРТ
+                    </a>
+                    <ul class="navbar-nav mb-2 d-md-flex flex-column flex-md-row">
+                        <li class="nav-item dropdown d-inline-flex ms-3 ms-md-0">
+                            <a class="nav-link dropdown-toggle links" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Медиаресурсы
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% slugurl 'homepage' %}">СМИ о КРТ</a></li>
+                                <li><a class="dropdown-item" href="{% slugurl 'homepage' %}"> Авторские статьи </a></li>
+                                <li><a class="dropdown-item" href="{% slugurl 'homepage' %}"> Подборка видео </a></li>
+                                <li><a class="dropdown-item" href="{% slugurl 'homepage' %}"> Полезные сервисы </a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item  d-inline-flex linkselem">
+                            <a class="nav-link links" aria-current="page" href="{% slugurl 'homepage' %}">
+                                Мероприятия
+                            </a>
+                        </li>
+                        <li class="nav-item  d-inline-flex linkselem ">
+                            <a class="nav-link links" aria-current="page" href="{% slugurl 'homepage' %}">
+                                Дорожная карта по ОСС
+                            </a>
+                        </li>
+                        <li class="nav-item  d-inline-flex linkselem ">
+                            <a class="nav-link links" aria-current="page" href="{% slugurl 'homepage' %}">
+                                Законодательство
+                            </a>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-outline-light buttons rounded-5 px-4 mt-md-2 mt-lg-0 mb-2">
+                        УЗНАТЬ О ДВИЖЕНИИ
+                    </button>
+                </div>
+            </div>
+            <hr class="mt-0">
+            <div class="d-md-flex icons">
+                <div class="d-md-flex flex-row flex-grow-1">
+                    <div class="">
+                        Следите за актуальными новостями <br> в наших соцсетях
+                    </div>
+                    <div class="ms-0 ms-md-5 mt-3 mt-md-0">
+                        <a href="https://vk.com/anti_krt_spb" target="_blank">
+                            <img class="backimgs me-3" src="{% static 'imgs/vk.svg'%}" alt="наша группа вконтакте"></a>
+
+                        <a href="https://www.youtube.com/@user-kj7xn2he8z/playlists" target="_blank">
+                            <img class="backimgs me-3" src="{% static 'imgs/youtube.svg'%}" alt="наш ютуб канал"></a>
+
+                        <a href="https://t.me/chat_anti_krt" target="_blank">
+                            <img class="backimgs" src="{% static 'imgs/telegram.svg'%}" alt="мы в телеграм"></a>
+                    </div>
+                </div>
+                <div class="my-3 my-md-0">
+                    <div>Связаться с нами:</div>
+                    <div>
+                        <a class="mt-2" href="https://t.me/chat_anti_krt">Мы в телеграм</a>
+                    </div>
+                    <div>
+                        <a class="mt-2" href="mailto:feedback@anti-krt.spb.ru">Напишите нам письмо </a>    
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4 mt-3 d-md-flex flex-row autorsbox">
+                <div class="d-xl-flex flex-row flex-grow-1 ">
+                    <div>
+                        "Опоссум" - идея рисунка
+                        <a href="https://t.me/junnkyjunky">
+                            @junnkyjunky</a>, художник    
+                        <a href="https://vk.com/osier_forest">
+                            Яна Вятелень</a>.&ensp;
+                    </div>
+                    <div class="">
+                        За "Я-МЫ ПРОТИВ"  спасибо  
+                        <a href="https://t.me/junnkyjunky">@junnkyjunky</a> и 
+                        <a href="https://t.me/keffart">@keffart</a>.
+                    </div>
+                </div>
+                <div class="my-3 my-lg-0 align-self-end">
+                    2022
+                </div>
+            </div>
+            <div style="height: 1px;"></div>
+        </div>
+    </footer>
+    {# Global javascript #}
+    {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+        
+    {% endblock %}
+</body>
+</html>
